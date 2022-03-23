@@ -51,7 +51,12 @@ function App() {
 export default App
 
 const Detail = (launch: any) => {
-  return <div>WOOT!!!</div>
+  return (
+    <div>
+      {' '}
+      <img src={launch.links.patch.large} alt='some extra stuff' />
+    </div>
+  )
 }
 const x = {
   fairings: {
