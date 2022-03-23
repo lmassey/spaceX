@@ -1,3 +1,30 @@
+# Review the current PR
+
+
+## SpaceX Project
+Goal:
+This exercise is designed to represent a typical client engagement.  Deliver as much value as you can in the time allotted.
+Rules:
+1) You have all the tools at your disposal you would normally have when starting greenfield project.
+2) Google, npm registry etc are all in play.
+3) The only thing you can't do is use a SpaceX client SDK.  We need to build our own.
+3) You have about 90 minutes to deliver as much values as you can.
+4) As you go through and code try and talk through your decisions.
+Figma:
+https://www.figma.com/file/F7zmVUAIqcgggWa5ZpDyCB/Componets?node-id=4%3A34
+Back End
+The good folks at SpaceX were kind enough to build out a backend we can consume:
+https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches/v4/past.md
+https://github.com/r-spacex/SpaceX-API/blob/master/docs/launches/v4/one.md
+Use the past launches part of the API
+
+### Figma mockup
+https://www.figma.com/file/F7zmVUAIqcgggWa5ZpDyCB/Componets?node-id=4%3A34
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
