@@ -1,48 +1,56 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
   const [launches, setLaunches] = useState<any>([])
   const [showDetail, setShowDetail] = useState(false)
-  useEffect(() => {
-    fetch('https://api.spacexdata.com/v4/launches/past').then((response) => {
-      response.json().then((result) => {
-        setLaunches(result)
-      })
-    })
-  }, [])
-  const showDetail = (launch: any) => {
+
+  const showtheDetail = (launch: any) => {
     Detail(launch)
     setShowDetail(true)
   }
+
+  const makeLaunch = useCallback((launches: any) => {
+    let displayableLaunches = []
+    for (let i = 0; i < launches.length; i++) {
+      let launch = launches[i]
+      displayableLaunches.push(
+        <div key={i}>
+          <img
+            width='50px'
+            src={launch.links.patch.small}
+            alt='some extra stuff'
+          />
+          <div onClick={() => showtheDetail(launch)}>
+            <div>{launch.name}</div>
+            <div>{launch.date_utc}</div>
+            <div>{launch.flight_number}</div>
+            <div>{launch.success}</div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      )
+    }
+    console.log(displayableLaunches)
+    return displayableLaunches
+  }, [])
+  useEffect(() => {
+    fetch('https://api.spacexdata.com/v4/launches/past').then((response) => {
+      response.json().then((result) => {
+        setLaunches(makeLaunch(result))
+      })
+    })
+  }, [makeLaunch])
+
   return (
     <div className='App'>
-      {console.log(launches)}
       <div>
         {showDetail && <Detail />}
-        {!showDetail &&
-          launches.map((launch: any) => {
-            return (
-              <div>
-                <img
-                  width='50px'
-                  src={launch.links.patch.small}
-                  alt='some extra stuff'
-                />
-                <div onClick={() => showDetail(launch)}>
-                  <div>{launch.name}</div>
-                  <div>{launch.date_utc}</div>
-                  <div>{launch.flight_number}</div>
-                  <div>{launch.success}</div>
-                </div>
-                <br />
-                <br />
-                <br />
-                <br />
-              </div>
-            )
-          })}
+        {!showDetail && launches}
       </div>
     </div>
   )
@@ -53,11 +61,11 @@ export default App
 const Detail = (launch: any) => {
   return (
     <div>
-      {' '}
-      <img src={launch.links.patch.large} alt='some extra stuff' />
+      <img src={launch?.links?.patch?.large} alt='some extra stuff' />
     </div>
   )
 }
+
 const x = {
   fairings: {
     reused: false,
