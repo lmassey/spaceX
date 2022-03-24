@@ -1,7 +1,7 @@
-# Review the current PR
+# Part 1: Review the current PR here on github
 
 
-## SpaceX Project
+## Part 2: SpaceX Project
 Goal:
 This exercise is designed to represent a typical client engagement.  Deliver as much value as you can in the time allotted.
 Rules:
